@@ -66,8 +66,8 @@
                         <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <nil key="highlightedColor"/>
                     </label>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="746-ZE-jgI">
-                        <rect key="frame" x="281.5" y="10" width="40.5" height="17.5"/>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="746-ZE-jgI">
+                        <rect key="frame" x="276.5" y="15" width="40.5" height="17.5"/>
                         <fontDescription key="fontDescription" name="ArialRoundedMTBold" family="Arial Rounded MT Bold" pointSize="15"/>
                         <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <nil key="highlightedColor"/>
@@ -85,7 +85,7 @@
                 <constraint firstItem="T0l-w6-4M8" firstAttribute="centerX" secondItem="ZTg-uK-7eu" secondAttribute="centerX" multiplier="1.6" id="Idc-r7-ihC"/>
                 <constraint firstAttribute="trailing" secondItem="STE-J4-dV2" secondAttribute="trailing" constant="70" id="PFa-Jk-J77"/>
                 <constraint firstItem="X9C-hu-fWg" firstAttribute="height" secondItem="ran-Ty-cfe" secondAttribute="height" id="Qs3-ey-9dS"/>
-                <constraint firstItem="746-ZE-jgI" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" constant="10" id="RTA-TX-acc"/>
+                <constraint firstItem="746-ZE-jgI" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" constant="15" id="RTA-TX-acc"/>
                 <constraint firstItem="X9C-hu-fWg" firstAttribute="centerY" secondItem="ran-Ty-cfe" secondAttribute="centerY" id="UkE-ly-tOt"/>
                 <constraint firstItem="BEi-Or-Pdu" firstAttribute="centerY" secondItem="ZTg-uK-7eu" secondAttribute="centerY" multiplier="1.1" id="VmK-3I-Elp"/>
                 <constraint firstItem="Oxg-BJ-HOS" firstAttribute="centerY" secondItem="ZTg-uK-7eu" secondAttribute="centerY" multiplier="0.25" id="XMA-oC-KYS"/>
@@ -97,7 +97,7 @@
                 <constraint firstItem="T0l-w6-4M8" firstAttribute="leading" secondItem="X9C-hu-fWg" secondAttribute="trailing" id="eyg-Yk-fjB"/>
                 <constraint firstItem="STE-J4-dV2" firstAttribute="centerY" secondItem="ZTg-uK-7eu" secondAttribute="centerY" multiplier="0.65" id="j1M-gz-mZs"/>
                 <constraint firstItem="Oxg-BJ-HOS" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" constant="70" id="jbP-44-mXh"/>
-                <constraint firstAttribute="trailing" secondItem="746-ZE-jgI" secondAttribute="trailing" constant="10" id="or5-hx-GSH"/>
+                <constraint firstAttribute="trailing" secondItem="746-ZE-jgI" secondAttribute="trailing" constant="15" id="or5-hx-GSH"/>
                 <constraint firstItem="STE-J4-dV2" firstAttribute="centerX" secondItem="ZTg-uK-7eu" secondAttribute="centerX" id="ouX-oI-Dca"/>
                 <constraint firstItem="STE-J4-dV2" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" constant="70" id="qWc-pm-sIg"/>
                 <constraint firstItem="ran-Ty-cfe" firstAttribute="centerX" secondItem="ZTg-uK-7eu" secondAttribute="centerX" id="v4Y-8W-aad"/>

@@ -31,6 +31,8 @@
 		D58C18BA231C7FEB005DFA2C /* DBService.swift in Sources */ = {isa = PBXBuildFile; fileRef = D58C18B9231C7FEB005DFA2C /* DBService.swift */; };
 		D58C18BC231C805F005DFA2C /* DBService+ManoUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = D58C18BB231C805F005DFA2C /* DBService+ManoUser.swift */; };
 		D58C18BE231C811F005DFA2C /* Date+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = D58C18BD231C811F005DFA2C /* Date+Extension.swift */; };
+		D5C7A3222321AF4B00EECB51 /* RideDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5C7A3202321AF4B00EECB51 /* RideDetailViewController.swift */; };
+		D5C7A3232321AF4B00EECB51 /* RideDetailViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = D5C7A3212321AF4B00EECB51 /* RideDetailViewController.xib */; };
 		D5E61062231C931B00E80886 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = D5E61061231C931B00E80886 /* GoogleService-Info.plist */; };
 		D5E61065231F105A00E80886 /* DBService+Ride.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5E61064231F105A00E80886 /* DBService+Ride.swift */; };
 		D5E61068231F188B00E80886 /* AlertViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5E61066231F188A00E80886 /* AlertViewController.swift */; };
@@ -68,6 +70,8 @@
 		D58C18B9231C7FEB005DFA2C /* DBService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DBService.swift; sourceTree = "<group>"; };
 		D58C18BB231C805F005DFA2C /* DBService+ManoUser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "DBService+ManoUser.swift"; path = "../DBService+ManoUser.swift"; sourceTree = "<group>"; };
 		D58C18BD231C811F005DFA2C /* Date+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+Extension.swift"; sourceTree = "<group>"; };
+		D5C7A3202321AF4B00EECB51 /* RideDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = RideDetailViewController.swift; path = "../../app-ui/RideDetailViewController.swift"; sourceTree = "<group>"; };
+		D5C7A3212321AF4B00EECB51 /* RideDetailViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = RideDetailViewController.xib; sourceTree = "<group>"; };
 		D5E61061231C931B00E80886 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		D5E61064231F105A00E80886 /* DBService+Ride.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DBService+Ride.swift"; sourceTree = "<group>"; };
 		D5E61066231F188A00E80886 /* AlertViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertViewController.swift; sourceTree = "<group>"; };
@@ -173,6 +177,7 @@
 				D5E61067231F188B00E80886 /* AlertViewController.xib */,
 				D5E6106A2320307000E80886 /* RideStatusCollectionViewCell.swift */,
 				D5E6106B2320307000E80886 /* RideStatusCollectionViewCell.xib */,
+				D5C7A3212321AF4B00EECB51 /* RideDetailViewController.xib */,
 			);
 			path = "app-ui";
 			sourceTree = "<group>";
@@ -199,6 +204,7 @@
 			children = (
 				D579155F231869DF002F829F /* MainViewController.swift */,
 				D57B307F231C1D0F00BCFC48 /* ScheduleRideViewController.swift */,
+				D5C7A3202321AF4B00EECB51 /* RideDetailViewController.swift */,
 			);
 			path = view;
 			sourceTree = "<group>";
@@ -295,6 +301,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				D579155223158EAA002F829F /* LaunchScreen.storyboard in Resources */,
+				D5C7A3232321AF4B00EECB51 /* RideDetailViewController.xib in Resources */,
 				D5E61062231C931B00E80886 /* GoogleService-Info.plist in Resources */,
 				D58C18AD231C5F10005DFA2C /* Login+Create+Storyboard.storyboard in Resources */,
 				D579154F23158EAA002F829F /* Assets.xcassets in Resources */,
@@ -376,6 +383,7 @@
 				D579155C231868D8002F829F /* MainScreenView.swift in Sources */,
 				D560CF50231B419100973EAF /* APIKeys.swift in Sources */,
 				D58C18BE231C811F005DFA2C /* Date+Extension.swift in Sources */,
+				D5C7A3222321AF4B00EECB51 /* RideDetailViewController.swift in Sources */,
 				D5E61068231F188B00E80886 /* AlertViewController.swift in Sources */,
 				D518350F231B3C3200CCADD4 /* MapsHelper.swift in Sources */,
 				D57B3088231C5DC600BCFC48 /* ColectionKeys.swift in Sources */,

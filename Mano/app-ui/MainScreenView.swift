@@ -164,7 +164,7 @@ class MainScreenView: UIView {
     
     lazy var whereToLabel: UIView = {
         var label = UILabel()
-        label.text = "WhereTo"
+        label.text = "Where to..."
         label.textColor = .white
         label.font =  UIFont(name: "ArialRoundedMTBold", size: 25)
         return label
@@ -249,11 +249,7 @@ class MainScreenView: UIView {
         addSubview(scheduleRideView)
         scheduleRideView.snp.makeConstraints { (make) in
             make.width.equalToSuperview()
-            if isScheduleViewHiden{
             make.centerY.equalToSuperview().multipliedBy(1.5 + (5/6))
-            } else {
-            make.bottom.equalTo(2)
-            }
             make.height.equalToSuperview().dividedBy(2)
             make.centerX.equalToSuperview()
             
@@ -381,15 +377,9 @@ class MainScreenView: UIView {
     
     func showScheduleRideView(_ isHidden: Bool) {
         if isHidden{
-            UIView.animate(withDuration: 0.3) {
-                self.scheduleRideView.frame.origin.y -= self.scheduleRideView.frame.height * (5/6)
-            }
-            isScheduleViewHiden = false
+            showScheduleRideView()
         } else {
-            UIView.animate(withDuration: 0.3) {
-                self.scheduleRideView.frame.origin.y += self.scheduleRideView.frame.height * (5/6)
-            }
-            isScheduleViewHiden = true
+            hideScheduleRideView()
         }
     }
 
@@ -399,5 +389,23 @@ class MainScreenView: UIView {
     
     private func locationWasSelected() {
         
+    }
+    
+    func showScheduleRideView() {
+        if isScheduleViewHiden {
+            UIView.animate(withDuration: 0.3) {
+                self.scheduleRideView.frame.origin.y -= self.scheduleRideView.frame.height * (5/6)
+            }
+            isScheduleViewHiden = false
+        }
+    }
+    
+    func hideScheduleRideView() {
+        if !isScheduleViewHiden{
+            UIView.animate(withDuration: 0.3) {
+                self.scheduleRideView.frame.origin.y += self.scheduleRideView.frame.height * (5/6)
+            }
+            isScheduleViewHiden = true
+        }
     }
 }

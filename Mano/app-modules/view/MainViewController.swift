@@ -38,11 +38,10 @@ class MainViewController: UIViewController {
     }
     
     override func viewDidAppear(_ animated: Bool) {
-        
     }
     
     override func viewDidDisappear(_ animated: Bool) {
-        mainScreenView.isScheduleViewHiden = true
+        mainScreenView.hideScheduleRideView()
         listener.remove()
     }
     
@@ -129,7 +128,7 @@ extension MainViewController: UICollectionViewDataSource,UICollectionViewDelegat
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "RideStatusCollectionViewCell", for: indexPath) as? RideStatusCollectionViewCell else {fatalError("No cell")}
         let ride = rides[indexPath.row]
         cell.configureCell(with: ride)
-        cell.indexLabel.text = "\(indexPath.row)" + "\\" + "\(rides.count)"
+        cell.indexLabel.text = "\(indexPath.row + 1)" + "\\" + "\(rides.count)"
         return cell
     }
     
@@ -144,5 +143,12 @@ extension MainViewController: UICollectionViewDataSource,UICollectionViewDelegat
         //            return UIEdgeInsets(top: 0, left: leftInsets, bottom: 0, right: rightInstets)
         //        }
         return UIEdgeInsets(top: 0, left: leftInsets, bottom: 0, right: rightInstets)
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        let ride = rides[indexPath.row]
+        let detailRide = RideDetailViewController(nibName: nil, bundle: nil, pickupAddress: ride.pickupAddress, appointmentAddress: ride.dropoffAddress, dropoffAddress: ride.pickupAddress, date: ride.appointmentDate)
+        detailRide.modalPresentationStyle = .overCurrentContext
+        present(detailRide, animated: true)
     }
 }
