@@ -34,6 +34,7 @@ struct MapsHelper {
         autocompleteController.primaryTextColor = #colorLiteral(red: 0, green: 0.6754498482, blue: 0.9192627668, alpha: 1)
         autocompleteController.secondaryTextColor = #colorLiteral(red: 0, green: 0.6754498482, blue: 0.9192627668, alpha: 1)
         autocompleteController.tableCellSeparatorColor = #colorLiteral(red: 0, green: 0.4980392157, blue: 0.737254902, alpha: 1)
+        autocompleteController.modalPresentationStyle = .fullScreen
         Vc.present(autocompleteController, animated: true, completion: nil)
     }
     

@@ -211,13 +211,13 @@ extension ScheduleRideViewController: ScheduleRideViewDelegate {
             scheduleRideView.datePicker.isHidden = true
         } else {
             selectedDatePressed = true
-            UIView.animate(withDuration: 0.3) {
+            UIView.animate(withDuration: 0.3, animations: {
                 self.scheduleRideView.scheduleRideView.transform = CGAffineTransform(scaleX: 1, y: 2)
                 self.scheduleRideView.scheduleRideButtonView.frame.origin.y -= self.scheduleRideView.scheduleRideButtonView.frame.height * 3
                 self.scheduleRideView.selectDateView.frame.origin.y -= self.scheduleRideView.selectDateView.frame.height * 3
-                
+            }) { (done) in
+                self.scheduleRideView.datePicker.isHidden = false
             }
-            scheduleRideView.datePicker.isHidden = false
         }
     }
     
@@ -226,13 +226,8 @@ extension ScheduleRideViewController: ScheduleRideViewDelegate {
     }
     
     func didChangeDate() {
-        if changeWidth {
-            UIView.animate(withDuration: 0.3) {
-                self.scheduleRideView.cancelButton.frame.size.width -= self.scheduleRideView.scheduleRideView.frame.width / 2
-            }
-            scheduleRideView.requestButton.isHidden = false
-            changeWidth = false
-        }
+        self.scheduleRideView.requestButton.alpha = 1
+        self.scheduleRideView.requestButton.isEnabled = true
     }
 }
 

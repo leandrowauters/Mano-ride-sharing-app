@@ -22,6 +22,15 @@ class MainViewController: UIViewController {
             }
         }
     }
+    
+    private var history = [Ride]() {
+        didSet {
+            DispatchQueue.main.async {
+                self.mainScreenView.pastTripsTableView.reloadData()
+            }
+        }
+    }
+    
     private var userId = String()
     private var listener: ListenerRegistration!
     
@@ -32,12 +41,15 @@ class MainViewController: UIViewController {
         mainScreenView.delegate = self
         mainScreenView.ridesCollectionView.delegate = self
         mainScreenView.ridesCollectionView.dataSource = self
-        fetchUser()
+        mainScreenView.pastTripsTableView.delegate = self
+        mainScreenView.pastTripsTableView.dataSource = self
+        
         
         // Do any additional setup after loading the view.
     }
     
     override func viewDidAppear(_ animated: Bool) {
+        fetchUser()
     }
     
     override func viewDidDisappear(_ animated: Bool) {
@@ -62,8 +74,6 @@ class MainViewController: UIViewController {
             if let manoUser = manoUser {
                 DBService.currentManoUser = manoUser
                 self.mainScreenView.activityIndicator.stopAnimating()
-                self.mainScreenView.welcomeMessage.isHidden = false
-                self.mainScreenView.welcomeMessage.text = "Welcome\n \(manoUser.fullName)"
                 self.fetchRides()
             }
         }
@@ -75,12 +85,23 @@ class MainViewController: UIViewController {
                 self.showAlert(title: "No rides fetched", message: error.localizedDescription)
             }
             if let rides = rides {
-                self.rides = rides
+                self.mainScreenView.noPreviousTripLabel.isHidden = true
+                let filterRides = rides.filter { (ride) -> Bool in
+                    !ride.appointmentDate.stringToDate().dateExpired() && (ride.rideStatus != RideStatus.rideCancelled.rawValue || ride.rideStatus != RideStatus.rideIsOver.rawValue)
+                }
+                self.rides = filterRides
+                self.history = rides
+                self.mainScreenView.manoLogo.isHidden = true
+                self.mainScreenView.rideStatusView.isHidden = false
             }
         }
     }
 }
 extension MainViewController: MainScreenDelegate{
+    func manuPressed() {
+
+    }
+    
     func didPressedWhereTo(_: Bool) {
         MapsHelper.shared.setupAutoCompeteVC(Vc: self)
     }
@@ -151,4 +172,21 @@ extension MainViewController: UICollectionViewDataSource,UICollectionViewDelegat
         detailRide.modalPresentationStyle = .overCurrentContext
         present(detailRide, animated: true)
     }
+}
+
+extension MainViewController: UITableViewDelegate, UITableViewDataSource {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return history.count
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: "RideHistoryCell", for: indexPath) as? RideHistoryCell else {fatalError()}
+        let historyRide = history[indexPath.row]
+        cell.setupCell(with: historyRide)
+        return cell
+    }
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 75
+    }
+    
 }

@@ -10,6 +10,11 @@
 		9C705B2D992CA35D38A9FA2B /* Pods_Mano.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A06043317CC207D15708B59A /* Pods_Mano.framework */; };
 		D518350F231B3C3200CCADD4 /* MapsHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = D518350E231B3C3200CCADD4 /* MapsHelper.swift */; };
 		D5183513231B3E2500CCADD4 /* ViewController+Alert.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5183512231B3E2500CCADD4 /* ViewController+Alert.swift */; };
+		D51DF04C233FA60A00DCAEA0 /* MenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D51DF04B233FA60A00DCAEA0 /* MenuViewController.swift */; };
+		D51DF04E23402A8E00DCAEA0 /* String+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = D51DF04D23402A8E00DCAEA0 /* String+Extension.swift */; };
+		D51DF05123402FEB00DCAEA0 /* RideHistoryCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D51DF04F23402FEB00DCAEA0 /* RideHistoryCell.swift */; };
+		D51DF05223402FEB00DCAEA0 /* RideHistoryCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = D51DF05023402FEB00DCAEA0 /* RideHistoryCell.xib */; };
+		D553861E232710140076C1AC /* MenuView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D553861D232710140076C1AC /* MenuView.swift */; };
 		D560CF50231B419100973EAF /* APIKeys.swift in Sources */ = {isa = PBXBuildFile; fileRef = D560CF4F231B419100973EAF /* APIKeys.swift */; };
 		D579154523158EA8002F829F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D579154423158EA8002F829F /* AppDelegate.swift */; };
 		D579154D23158EA8002F829F /* Mano.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = D579154B23158EA8002F829F /* Mano.xcdatamodeld */; };
@@ -47,6 +52,11 @@
 		BBB137707C00EEDCE27A7712 /* Pods-Mano.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Mano.release.xcconfig"; path = "Target Support Files/Pods-Mano/Pods-Mano.release.xcconfig"; sourceTree = "<group>"; };
 		D518350E231B3C3200CCADD4 /* MapsHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapsHelper.swift; sourceTree = "<group>"; };
 		D5183512231B3E2500CCADD4 /* ViewController+Alert.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ViewController+Alert.swift"; sourceTree = "<group>"; };
+		D51DF04B233FA60A00DCAEA0 /* MenuViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuViewController.swift; sourceTree = "<group>"; };
+		D51DF04D23402A8E00DCAEA0 /* String+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Extension.swift"; sourceTree = "<group>"; };
+		D51DF04F23402FEB00DCAEA0 /* RideHistoryCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RideHistoryCell.swift; sourceTree = "<group>"; };
+		D51DF05023402FEB00DCAEA0 /* RideHistoryCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = RideHistoryCell.xib; sourceTree = "<group>"; };
+		D553861D232710140076C1AC /* MenuView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuView.swift; sourceTree = "<group>"; };
 		D560CF4F231B419100973EAF /* APIKeys.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIKeys.swift; sourceTree = "<group>"; };
 		D579154123158EA8002F829F /* Mano.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Mano.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D579154423158EA8002F829F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -123,6 +133,7 @@
 			children = (
 				D5183512231B3E2500CCADD4 /* ViewController+Alert.swift */,
 				D58C18BD231C811F005DFA2C /* Date+Extension.swift */,
+				D51DF04D23402A8E00DCAEA0 /* String+Extension.swift */,
 			);
 			path = "app-ext";
 			sourceTree = "<group>";
@@ -177,7 +188,10 @@
 				D5E61067231F188B00E80886 /* AlertViewController.xib */,
 				D5E6106A2320307000E80886 /* RideStatusCollectionViewCell.swift */,
 				D5E6106B2320307000E80886 /* RideStatusCollectionViewCell.xib */,
+				D51DF04F23402FEB00DCAEA0 /* RideHistoryCell.swift */,
+				D51DF05023402FEB00DCAEA0 /* RideHistoryCell.xib */,
 				D5C7A3212321AF4B00EECB51 /* RideDetailViewController.xib */,
+				D553861D232710140076C1AC /* MenuView.swift */,
 			);
 			path = "app-ui";
 			sourceTree = "<group>";
@@ -205,6 +219,7 @@
 				D579155F231869DF002F829F /* MainViewController.swift */,
 				D57B307F231C1D0F00BCFC48 /* ScheduleRideViewController.swift */,
 				D5C7A3202321AF4B00EECB51 /* RideDetailViewController.swift */,
+				D51DF04B233FA60A00DCAEA0 /* MenuViewController.swift */,
 			);
 			path = view;
 			sourceTree = "<group>";
@@ -302,6 +317,7 @@
 			files = (
 				D579155223158EAA002F829F /* LaunchScreen.storyboard in Resources */,
 				D5C7A3232321AF4B00EECB51 /* RideDetailViewController.xib in Resources */,
+				D51DF05223402FEB00DCAEA0 /* RideHistoryCell.xib in Resources */,
 				D5E61062231C931B00E80886 /* GoogleService-Info.plist in Resources */,
 				D58C18AD231C5F10005DFA2C /* Login+Create+Storyboard.storyboard in Resources */,
 				D579154F23158EAA002F829F /* Assets.xcassets in Resources */,
@@ -383,19 +399,23 @@
 				D579155C231868D8002F829F /* MainScreenView.swift in Sources */,
 				D560CF50231B419100973EAF /* APIKeys.swift in Sources */,
 				D58C18BE231C811F005DFA2C /* Date+Extension.swift in Sources */,
+				D553861E232710140076C1AC /* MenuView.swift in Sources */,
 				D5C7A3222321AF4B00EECB51 /* RideDetailViewController.swift in Sources */,
 				D5E61068231F188B00E80886 /* AlertViewController.swift in Sources */,
 				D518350F231B3C3200CCADD4 /* MapsHelper.swift in Sources */,
 				D57B3088231C5DC600BCFC48 /* ColectionKeys.swift in Sources */,
 				D57B308A231C5DFA00BCFC48 /* Ride.swift in Sources */,
 				D57B3082231C1D2900BCFC48 /* ScheduleRideView.swift in Sources */,
+				D51DF05123402FEB00DCAEA0 /* RideHistoryCell.swift in Sources */,
 				D58C18AF231C660E005DFA2C /* IBDesignableViews.swift in Sources */,
 				D5E6106C2320307000E80886 /* RideStatusCollectionViewCell.swift in Sources */,
 				D5183513231B3E2500CCADD4 /* ViewController+Alert.swift in Sources */,
 				D579154523158EA8002F829F /* AppDelegate.swift in Sources */,
 				D58C18BC231C805F005DFA2C /* DBService+ManoUser.swift in Sources */,
+				D51DF04E23402A8E00DCAEA0 /* String+Extension.swift in Sources */,
 				D58C18B8231C7FAD005DFA2C /* StorageService.swift in Sources */,
 				D57B3086231C5D9600BCFC48 /* ManoUser.swift in Sources */,
+				D51DF04C233FA60A00DCAEA0 /* MenuViewController.swift in Sources */,
 				D57B3080231C1D0F00BCFC48 /* ScheduleRideViewController.swift in Sources */,
 				D5791560231869DF002F829F /* MainViewController.swift in Sources */,
 				D58C18B6231C7F65005DFA2C /* AuthService.swift in Sources */,

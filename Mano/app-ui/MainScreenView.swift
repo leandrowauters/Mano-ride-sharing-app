@@ -12,6 +12,7 @@ import SnapKit
 
 protocol MainScreenDelegate: AnyObject {
     func didPressedWhereTo(_: Bool)
+    func manuPressed()
 }
 class MainScreenView: UIView {
     
@@ -24,65 +25,29 @@ class MainScreenView: UIView {
         return imageView
     }()
     
+    lazy var manoLogo: UILabel = {
+        var label = UILabel()
+        label.text = "Mano"
+        label.font = UIFont(name: "ArialRoundedMTBold", size: 75)
+        label.textColor = .white
+        label.textAlignment = .center
+        return label
+    }()
+    
     lazy var menuButton: UIButton = {
         var button = UIButton()
         button.setImage(UIImage(named: "menu"), for: .normal)
+
         return button
     }()
-    
-    lazy var menuView: UIView = {
-       var view = UIView()
-        view.backgroundColor = .clear
-       view.layer.borderWidth = 1.5
-        view.layer.borderColor = #colorLiteral(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0)
-        view.isHidden = true
-        return view
-    }()
-    
-    //MENUVIEW SUBVIEWS
-            lazy var editProfileButton: UIButton = {
-                    var button = UIButton()
-                    button.setImage(UIImage(named: "editProfileButton"), for: .normal)
-                    button.contentHorizontalAlignment = .fill
-                    button.contentVerticalAlignment = .fill
-                    button.imageView?.contentMode = .scaleAspectFill
-                    return button
-            }()
-    
-            lazy var yourTripsButton: UIButton = {
-                    var button = UIButton()
-                    button.setImage(UIImage(named: "yourTripsButton"), for: .normal)
-                    button.contentHorizontalAlignment = .fill
-                    button.contentVerticalAlignment = .fill
-                    button.imageView?.contentMode = .scaleAspectFill
-                    return button
-            }()
-    
-            lazy var settingsButton: UIButton = {
-                    var button = UIButton()
-                    button.setImage(UIImage(named: "settingsButton"), for: .normal)
-                    button.contentHorizontalAlignment = .fill
-                    button.contentVerticalAlignment = .fill
-                    button.imageView?.contentMode = .scaleAspectFit
-                    return button
-            }()
+
     
     
-    lazy var welcomeMessage: UILabel = {
-        var label = UILabel()
-        label.font = UIFont(name: "ArialRoundedMTBold", size: 35)
-        label.text = "Welcome"
-        label.numberOfLines = 2
-        label.textColor = .white
-        label.textAlignment = .center
-        label.isHidden = true
-        return label
-    }()
     
     lazy var rideStatusView: UIView = {
         var view =  UIView()
         view.backgroundColor = .clear
-        view.isHidden = false
+        view.isHidden = true
         return view
     }()
     
@@ -180,6 +145,9 @@ class MainScreenView: UIView {
         var tableView = UITableView()
         tableView.backgroundColor = .clear
         tableView.separatorStyle = .none
+        tableView.register(UINib(nibName: "RideHistoryCell", bundle: nil), forCellReuseIdentifier: "RideHistoryCell")
+        tableView.separatorStyle = .singleLine
+        tableView.separatorColor = .white
         return tableView
     }()
     
@@ -190,6 +158,7 @@ class MainScreenView: UIView {
         label.textColor = #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)
         return label
     }()
+    
     
     
     
@@ -208,13 +177,13 @@ class MainScreenView: UIView {
     
     private func commonInit() {
         addBackground()
-        setupWelcomeMessage()
-        setupMenuButton()
         setupManoLogo()
-        setupMenuView()  
+        
+        setupSmallerManoLogo() 
         setupRideStatus()
         setupScheduleView()
         setupActivityIndicator()
+        setupMenuButton()
     }
     
     private func addBackground() {
@@ -224,8 +193,17 @@ class MainScreenView: UIView {
         }
     }
     
+    private func setupManoLogo() {
+        addSubview(manoLogo)
+        manoLogo.snp.makeConstraints { (make) in
+            make.centerX.equalToSuperview()
+            make.centerY.equalToSuperview().multipliedBy(0.7)
+        }
+    }
+    
     private func setupMenuButton() {
         addSubview(menuButton)
+                menuButton.addTarget(self, action: #selector(menuPressed), for: .touchUpInside)
         menuButton.snp.makeConstraints { (make) in
             make.leading.equalTo(15)
             make.top.equalTo(20)
@@ -234,15 +212,7 @@ class MainScreenView: UIView {
         }
     }
     
-    private func setupMenuView() {
-        addSubview(menuView)
-        menuView.snp.makeConstraints { (make) in
-            make.top.equalTo(menuButton.snp.bottom)
-            make.width.equalToSuperview().multipliedBy(0.65)
-            make.height.equalToSuperview().multipliedBy(0.25)
-            make.leading.equalTo(15)
-        }
-    }
+
     
     
     private func setupScheduleView() {
@@ -321,16 +291,8 @@ class MainScreenView: UIView {
         }
     }
     
-    private func setupWelcomeMessage() {
-        addSubview(welcomeMessage)
-        welcomeMessage.snp.makeConstraints { (make) in
-            make.centerY.equalToSuperview().multipliedBy(1.4)
-            make.centerX.equalToSuperview()
-            make.width.equalToSuperview().inset(30)
-        }
-    }
     
-    private func setupManoLogo() {
+    private func setupSmallerManoLogo() {
         addSubview(smallerManoLogo)
 
     }
@@ -387,6 +349,10 @@ class MainScreenView: UIView {
         delegate?.didPressedWhereTo(true)
     }
     
+    @objc func menuPressed() {
+        delegate?.manuPressed()
+    }
+    
     private func locationWasSelected() {
         
     }
@@ -408,4 +374,6 @@ class MainScreenView: UIView {
             isScheduleViewHiden = true
         }
     }
+    
+    
 }

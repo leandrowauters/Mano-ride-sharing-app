@@ -76,19 +76,19 @@ class ScheduleRideView: UIView {
                     return label
             }()
     
-    lazy var roundTripLabel: UILabel = {
-       var label = UILabel()
-        label.text = "Round Trip?"
-        label.textColor = .white
-        label.font =  UIFont(name: "ArialRoundedMTBold", size: 30)
-        return label
-    }()
-    
-    lazy var roundTripSwitch: UISwitch = {
-        var roundTripSwitch = UISwitch()
-        roundTripSwitch.isOn = true
-        return roundTripSwitch
-    }()
+//    lazy var roundTripLabel: UILabel = {
+//       var label = UILabel()
+//        label.text = "Round Trip?"
+//        label.textColor = .white
+//        label.font =  UIFont(name: "ArialRoundedMTBold", size: 30)
+//        return label
+//    }()
+//
+//    lazy var roundTripSwitch: UISwitch = {
+//        var roundTripSwitch = UISwitch()
+//        roundTripSwitch.isOn = true
+//        return roundTripSwitch
+//    }()
     
     lazy var datePicker: UIDatePicker = {
         var datePicker = UIDatePicker()
@@ -122,7 +122,7 @@ class ScheduleRideView: UIView {
         mapView.snp.makeConstraints { (make) in
             make.width.equalToSuperview()
             make.top.equalToSuperview()
-            make.height.equalToSuperview().multipliedBy(0.6)
+            make.height.equalToSuperview().multipliedBy(0.7)
             make.centerX.equalToSuperview()
         }
     }
@@ -131,18 +131,20 @@ class ScheduleRideView: UIView {
         scheduleRideView.snp.makeConstraints { (make) in
             make.width.equalToSuperview()
             make.bottom.equalTo(2)
-            make.height.equalToSuperview().dividedBy(2)
+            make.height.equalToSuperview().dividedBy(3)
             make.centerX.equalToSuperview()
         }
         
-        let subViews = [scheduleRideButtonView, selectDateView, roundTripSwitch, roundTripLabel, cancelButton, requestButton]
+        let subViews = [scheduleRideButtonView, selectDateView, cancelButton, requestButton]
+        //ADD Round trip:
+//        let subViews = [scheduleRideButtonView, selectDateView, roundTripSwitch, roundTripLabel, cancelButton, requestButton]
         subViews.forEach { (subView) in
             addSubview(subView)
         }
         setupScheduleRideButton()
         setupSelectDateView()
-        setupRoundTripLabel()
-        setupRoundTripSwitch()
+//        setupRoundTripLabel()
+//        setupRoundTripSwitch()
         setupCancelButton()
         setupRequestButton()
         setupDatePicker()
@@ -153,7 +155,8 @@ class ScheduleRideView: UIView {
         scheduleRideButtonView.addSubview(imageView)
         
         scheduleRideButtonView.snp.makeConstraints { (make) in
-            make.top.leading.trailing.equalTo(scheduleRideView)
+            make.top.equalTo(scheduleRideView).offset(10)
+            make.leading.trailing.equalTo(scheduleRideView)
             make.height.equalTo(scheduleRideView).dividedBy(6)
         }
         scheduleRideLabel.snp.makeConstraints { (make) in
@@ -173,7 +176,7 @@ class ScheduleRideView: UIView {
         selectDateView.addSubview(selectDateLabel)
         selectDateView.addSubview(selectDateImage)
         selectDateView.snp.makeConstraints { (make) in
-            make.top.equalTo(scheduleRideButtonView.snp.bottom)
+            make.top.equalTo(scheduleRideButtonView.snp.bottom).offset(20)
             make.width.equalToSuperview()
             make.height.equalTo(scheduleRideView).dividedBy(6)
         }
@@ -191,19 +194,19 @@ class ScheduleRideView: UIView {
         
     }
     
-    private func setupRoundTripLabel() {
-        roundTripLabel.snp.makeConstraints { (make) in
-            make.top.equalTo(selectDateView.snp.bottom).inset(-25)
-            make.leading.equalTo(23)
-        }
-    }
-    
-    private func setupRoundTripSwitch() {
-        roundTripSwitch.snp.makeConstraints { (make) in
-            make.trailing.equalTo(-23)
-            make.centerY.equalTo(roundTripLabel)
-        }
-    }
+//    private func setupRoundTripLabel() {
+//        roundTripLabel.snp.makeConstraints { (make) in
+//            make.top.equalTo(selectDateView.snp.bottom).inset(-25)
+//            make.leading.equalTo(23)
+//        }
+//    }
+//
+//    private func setupRoundTripSwitch() {
+//        roundTripSwitch.snp.makeConstraints { (make) in
+//            make.trailing.equalTo(-23)
+//            make.centerY.equalTo(roundTripLabel)
+//        }
+//    }
     
     private func setupCancelButton() {
         cancelButton.setTitle("Cancel", for: .normal)
@@ -213,15 +216,15 @@ class ScheduleRideView: UIView {
         cancelButton.addTarget(self, action: #selector(cancelPressed), for: .touchUpInside)
         cancelButton.snp.makeConstraints { (make) in
             make.leading.equalTo(23)
-            make.trailing.equalTo(-23)
-            make.top.equalTo(roundTripLabel.snp.bottom).inset(-55)
-//            make.width.equalToSuperview().dividedBy(2.5)
-            make.height.equalTo(scheduleRideView).dividedBy(7.5)
+            make.top.equalTo(selectDateView.snp.bottom).inset(-55)
+            make.width.equalToSuperview().dividedBy(2.5)
+            make.height.equalTo(scheduleRideView).dividedBy(5)
         }
     }
     
     private func setupRequestButton() {
-        requestButton.isHidden = true
+        requestButton.alpha = 0.5
+        requestButton.isEnabled = false
         requestButton.addTarget(self, action: #selector(scheduleRidePressed), for: .touchUpInside)
         requestButton.setTitle("Request", for: .normal)
         requestButton.titleLabel?.font = UIFont(name: "ArialRoundedMTBold", size: 17)
@@ -229,19 +232,21 @@ class ScheduleRideView: UIView {
         requestButton.backgroundColor = #colorLiteral(red: 0, green: 0.7077997327, blue: 0, alpha: 1)
         requestButton.snp.makeConstraints { (make) in
             make.trailing.equalTo(-23)
-            make.top.equalTo(roundTripLabel.snp.bottom).inset(-55)
+            make.top.equalTo(selectDateView.snp.bottom).inset(-55)
             make.width.equalToSuperview().dividedBy(2.5)
-            make.height.equalTo(scheduleRideView).dividedBy(7.5)
+            make.height.equalTo(scheduleRideView).dividedBy(5)
         }
     }
     
     private func setupDatePicker() {
+        datePicker.layer.borderColor = #colorLiteral(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0)
+        datePicker.layer.borderWidth = 1
         datePicker.isHidden = true
         addSubview(datePicker)
         datePicker.snp.makeConstraints { (make) in
             make.trailing.leading.equalTo(scheduleRideView)
             make.height.equalTo(scheduleRideView).dividedBy(1.6)
-            make.bottom.equalTo(roundTripLabel.snp.top)
+            make.bottom.equalTo(cancelButton.snp.top).offset(-10)
         }
     }
     
