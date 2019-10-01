@@ -25,8 +25,8 @@ class ScheduleRideView: UIView {
     lazy var scheduleRideView: UIView = {
         var view = UIView()
         view.backgroundColor = #colorLiteral(red: 0.003921568627, green: 0.3019607843, blue: 0.4431372549, alpha: 1)
-        view.layer.cornerRadius = 30
-        view.layer.maskedCorners = [.layerMinXMinYCorner, .layerMaxXMinYCorner ]
+//        view.layer.cornerRadius = 30
+//        view.layer.maskedCorners = [.layerMinXMinYCorner, .layerMaxXMinYCorner ]
         view.layer.borderWidth = 2
         view.layer.borderColor = #colorLiteral(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0)
         return view
@@ -34,7 +34,11 @@ class ScheduleRideView: UIView {
     
     lazy var scheduleRideButtonView: UIView = {
        var view = UIView()
-        view.backgroundColor = .clear
+        view.backgroundColor = #colorLiteral(red: 0.0005744225346, green: 0.1626783907, blue: 0.2327522039, alpha: 1)
+        view.layer.cornerRadius = 30
+        view.layer.maskedCorners = [.layerMinXMinYCorner, .layerMaxXMinYCorner ]
+        view.layer.borderWidth = 2
+        view.layer.borderColor = #colorLiteral(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0)
         return view
     }()
     
@@ -155,9 +159,9 @@ class ScheduleRideView: UIView {
         scheduleRideButtonView.addSubview(imageView)
         
         scheduleRideButtonView.snp.makeConstraints { (make) in
-            make.top.equalTo(scheduleRideView).offset(10)
-            make.leading.trailing.equalTo(scheduleRideView)
-            make.height.equalTo(scheduleRideView).dividedBy(6)
+            make.bottom.equalTo(scheduleRideView.snp.top).offset(2)
+            make.leading.trailing.equalToSuperview()
+            make.height.equalTo(scheduleRideView).dividedBy(4.5)
         }
         scheduleRideLabel.snp.makeConstraints { (make) in
             make.leading.equalTo(23)

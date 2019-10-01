@@ -112,7 +112,6 @@ extension MainViewController: GMSAutocompleteViewControllerDelegate {
             showAlert(title: "Error finding address", message: nil)
             return}
         let coordinate = place.coordinate
-
         let vc = ScheduleRideViewController(nibName: nil, bundle: nil, dropoffAddress: dropoffAddress, dropoffName: place.name ?? "", dropoffLat: coordinate.latitude, dropoffLon: coordinate.longitude)
         navigationController?.pushViewController(vc, animated: true)
         dismiss(animated: true, completion: nil)
@@ -187,6 +186,12 @@ extension MainViewController: UITableViewDelegate, UITableViewDataSource {
     }
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 75
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let ride = history[indexPath.row]
+        let vc = ScheduleRideViewController(nibName: nil, bundle: nil, dropoffAddress: ride.dropoffAddress, dropoffName: ride.dropoffName , dropoffLat: ride.dropoffLat, dropoffLon: ride.dropoffLon)
+        navigationController?.pushViewController(vc, animated: true)
     }
     
 }

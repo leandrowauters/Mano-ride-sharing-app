@@ -205,7 +205,7 @@ extension ScheduleRideViewController: ScheduleRideViewDelegate {
             selectedDatePressed = false
             UIView.animate(withDuration: 0.3) {
                 self.scheduleRideView.scheduleRideView.transform = .identity
-                self.scheduleRideView.scheduleRideButtonView.frame.origin.y += self.scheduleRideView.scheduleRideButtonView.frame.height * 3
+                self.scheduleRideView.scheduleRideButtonView.frame.origin.y += self.scheduleRideView.scheduleRideButtonView.frame.height * 2
                 self.scheduleRideView.selectDateView.frame.origin.y += self.scheduleRideView.selectDateView.frame.height * 3
             }
             scheduleRideView.datePicker.isHidden = true
@@ -213,7 +213,7 @@ extension ScheduleRideViewController: ScheduleRideViewDelegate {
             selectedDatePressed = true
             UIView.animate(withDuration: 0.3, animations: {
                 self.scheduleRideView.scheduleRideView.transform = CGAffineTransform(scaleX: 1, y: 2)
-                self.scheduleRideView.scheduleRideButtonView.frame.origin.y -= self.scheduleRideView.scheduleRideButtonView.frame.height * 3
+                self.scheduleRideView.scheduleRideButtonView.frame.origin.y -= self.scheduleRideView.scheduleRideButtonView.frame.height * 2
                 self.scheduleRideView.selectDateView.frame.origin.y -= self.scheduleRideView.selectDateView.frame.height * 3
             }) { (done) in
                 self.scheduleRideView.datePicker.isHidden = false
@@ -235,6 +235,4 @@ extension ScheduleRideViewController: AlertViewDelegate {
     func okayPressed() {
         navigationController?.popViewController(animated: true)
     }
-    
-    
 }
