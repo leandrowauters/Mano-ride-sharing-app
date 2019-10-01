@@ -90,10 +90,17 @@ class MainViewController: UIViewController {
                     !ride.appointmentDate.stringToDate().dateExpired() && (ride.rideStatus != RideStatus.rideCancelled.rawValue || ride.rideStatus != RideStatus.rideIsOver.rawValue)
                 }
                 self.rides = filterRides
+                if filterRides.count == 0 {
+                    self.mainScreenView.rideStatusView.isHidden = true
+                    self.mainScreenView.manoLogo.isHidden = false
+                } else {
+                    self.mainScreenView.rideStatusView.isHidden = false
+                    self.mainScreenView.manoLogo.isHidden = true
+                }
                 self.history = rides
-                self.mainScreenView.manoLogo.isHidden = true
-                self.mainScreenView.rideStatusView.isHidden = false
+                
             }
+            
         }
     }
 }
