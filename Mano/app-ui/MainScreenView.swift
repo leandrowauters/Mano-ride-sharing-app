@@ -19,6 +19,7 @@ class MainScreenView: UIView {
     public var isScheduleViewHiden = true
     weak var delegate: MainScreenDelegate?
     
+    let menuView = MenuView()
     lazy var background: UIImageView = {
         var imageView = UIImageView()
         imageView.image = UIImage(named: "background")
@@ -167,6 +168,7 @@ class MainScreenView: UIView {
     
     override init(frame: CGRect) {
         super.init(frame: UIScreen.main.bounds)
+        backgroundColor = .white
         commonInit()
     }
     
@@ -178,7 +180,6 @@ class MainScreenView: UIView {
     private func commonInit() {
         addBackground()
         setupManoLogo()
-        
         setupSmallerManoLogo() 
         setupRideStatus()
         setupScheduleView()

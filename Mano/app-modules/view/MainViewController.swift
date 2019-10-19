@@ -15,6 +15,8 @@ class MainViewController: UIViewController {
 
     let mainScreenView = MainScreenView()
     
+    let auth = AuthService()
+    
     private var rides = [Ride]() {
         didSet {
             DispatchQueue.main.async {
@@ -33,6 +35,7 @@ class MainViewController: UIViewController {
     
     private var userId = String()
     private var listener: ListenerRegistration!
+    let dbService = DBService()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -43,14 +46,14 @@ class MainViewController: UIViewController {
         mainScreenView.ridesCollectionView.dataSource = self
         mainScreenView.pastTripsTableView.delegate = self
         mainScreenView.pastTripsTableView.dataSource = self
-        
+        auth.signIn(userId: userId)
+        auth.autherserviceSignInDelegate = self
+        dbService.rideFetchingDelegate = self
         
         // Do any additional setup after loading the view.
     }
     
-    override func viewDidAppear(_ animated: Bool) {
-        fetchUser()
-    }
+    
     
     override func viewDidDisappear(_ animated: Bool) {
         mainScreenView.hideScheduleRideView()
@@ -65,44 +68,40 @@ class MainViewController: UIViewController {
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
+
+
     
-    func fetchUser() {
-        DBService.fetchManoUser(userId: userId) { (error, manoUser) in
-            if let error = error {
-                self.showAlert(title: "Error", message: error.localizedDescription)
-            }
-            if let manoUser = manoUser {
-                DBService.currentManoUser = manoUser
-                self.mainScreenView.activityIndicator.stopAnimating()
-                self.fetchRides()
-            }
-        }
+
+}
+extension MainViewController: AuthServiceSignInDelegate {
+    func didSignIn(manoUser: ManoUser) {
+        dbService.fetchCurrentRides()
     }
     
-    func fetchRides() {
-        listener = DBService.fetchUserRides { (error, rides) in
-            if let error = error {
-                self.showAlert(title: "No rides fetched", message: error.localizedDescription)
-            }
-            if let rides = rides {
-                self.mainScreenView.noPreviousTripLabel.isHidden = true
-                let filterRides = rides.filter { (ride) -> Bool in
-                    !ride.appointmentDate.stringToDate().dateExpired() && (ride.rideStatus != RideStatus.rideCancelled.rawValue || ride.rideStatus != RideStatus.rideIsOver.rawValue)
-                }
-                self.rides = filterRides
-                if filterRides.count == 0 {
-                    self.mainScreenView.rideStatusView.isHidden = true
-                    self.mainScreenView.manoLogo.isHidden = false
-                } else {
-                    self.mainScreenView.rideStatusView.isHidden = false
-                    self.mainScreenView.manoLogo.isHidden = true
-                }
-                self.history = rides
-                
-            }
-            
-        }
+    func didSignInError(error: Error) {
+        mainScreenView.activityIndicator.stopAnimating()
+        showAlert(title: "Error signing in", message: error.localizedDescription)
     }
+}
+
+extension MainViewController: RideFetchingDelegate {
+    func didFetchRides(rides: [Ride]) {
+        if rides.count == 0 {
+            self.mainScreenView.rideStatusView.isHidden = true
+            self.mainScreenView.manoLogo.isHidden = false
+        } else {
+            self.mainScreenView.rideStatusView.isHidden = false
+            self.mainScreenView.manoLogo.isHidden = true
+            self.rides = rides
+        }
+        mainScreenView.activityIndicator.stopAnimating()
+    }
+    
+    func errorFetchingRides(error: Error) {
+        showAlert(title: "Error fetching ride", message: error.localizedDescription)
+    }
+    
+    
 }
 extension MainViewController: MainScreenDelegate{
     func manuPressed() {

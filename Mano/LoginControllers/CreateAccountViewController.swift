@@ -177,7 +177,7 @@ extension CreateAccountViewController : AuthServiceCreateNewAccountDelegate {
     func didCreateNewAccount(_ authservice: AuthService, user: ManoUser) {
         
         unregisterKeyboardNotifications()
-        
+        segueToMainVC(userId: user.userId)
     }
     
 }

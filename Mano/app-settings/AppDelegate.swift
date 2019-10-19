@@ -25,6 +25,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         FirebaseApp.configure()
         GIDSignIn.sharedInstance().clientID = FirebaseApp.app()?.options.clientID
         var nav = UINavigationController()
+//        AppDelegate.authservice.signOutAccount()
         if let manoUser = AppDelegate.authservice.getCurrentUser() {
             let mainViewVc = MainViewController(nibName: nil, bundle: nil, userId: manoUser.uid)
             nav = UINavigationController.init(rootViewController: mainViewVc)

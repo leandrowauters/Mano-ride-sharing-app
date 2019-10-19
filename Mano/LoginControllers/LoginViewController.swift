@@ -21,10 +21,13 @@ class LoginViewController: UIViewController {
     
     private var authservice = AppDelegate.authservice
     private var user: User?
+    let dbService = DBService()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         setup()
         GIDSignIn.sharedInstance().delegate = self
+        authservice.authserviceExistingAccountDelegate = self
         registerKeyboardNotifications()
         setupTextFieldsDelegates()
         googleSignInSetup()
@@ -95,6 +98,9 @@ class LoginViewController: UIViewController {
         unregisterKeyboardNotifications()
     }
     
+    @IBAction func loginPressed(_ sender: Any) {
+        signInCurrentUser()
+    }
     
     private func unregisterKeyboardNotifications(){
         NotificationCenter.default.removeObserver(self, name: UIResponder.keyboardWillShowNotification, object: nil)
@@ -119,12 +125,13 @@ extension LoginViewController: UITextFieldDelegate{
 
 extension LoginViewController : AuthServiceExistingAccountDelegate {
     func didSignInToExistingAccount(_ authservice: AuthService, user: User) {
-        DBService.fetchManoUser(userId: user.uid) { (error, manoUser) in
+        dbService.fetchManoUser(userId: user.uid) { [weak self] error, manoUser in
             if let error = error {
-                self.showAlert(title: "Error signign in", message: error.localizedDescription)
+                self?.showAlert(title: "Error signign in", message: error.localizedDescription)
             }
             if let manoUser = manoUser {
-                DBService.currentManoUser = manoUser
+                AuthService.currentManoUser = manoUser
+                self?.segueToMainVC(userId: manoUser.userId)
             }
         }
         
@@ -155,12 +162,12 @@ extension LoginViewController: GIDSignInDelegate {
                 return
             }
             if let user = Auth.auth().currentUser {
-                DBService.fetchManoUser(userId: user.uid, completion: { (error, manoUser) in
+                self.dbService.fetchManoUser(userId: user.uid, completion: { (error, manoUser) in
                     if let error = error {
                         self.showAlert(title: "Error fetching user", message: error.localizedDescription)
                     }
                     if let manoUser = manoUser {
-                        DBService.currentManoUser = manoUser
+                        AuthService.currentManoUser = manoUser
                     } else {
                         self.user = user
                         self.performSegue(withIdentifier: "Google sign in", sender: self)

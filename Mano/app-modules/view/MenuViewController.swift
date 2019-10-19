@@ -18,7 +18,14 @@ class MenuViewController: UIViewController {
         // Do any additional setup after loading the view.
     }
     
+    func setupTap() {
+        let tap = UITapGestureRecognizer(target: self, action: #selector(dismissView))
+        view.addGestureRecognizer(tap)
+    }
 
+    @objc func dismissView() {
+        dismiss(animated: false)
+    }
     /*
     // MARK: - Navigation
 

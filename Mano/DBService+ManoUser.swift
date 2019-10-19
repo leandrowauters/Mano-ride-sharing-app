@@ -12,9 +12,9 @@ import Firebase
 
 extension DBService {
     
-    static public var currentManoUser: ManoUser!
     
-    static public func createUser(manoUser: ManoUser, completion: @escaping (Error?) -> Void) {
+    
+    public func createUser(manoUser: ManoUser, completion: @escaping (Error?) -> Void) {
         DBService.firestoreDB.collection(ManoUserCollectionKeys.collectionKey).document(manoUser.userId).setData(
             [ManoUserCollectionKeys.firstNameKey : manoUser.firstName,
              ManoUserCollectionKeys.lastNameKey : manoUser.lastName,
@@ -36,7 +36,7 @@ extension DBService {
         }
     }
     
-    static public func updateBio(userId: String, bioText: String, completion: @escaping (Error?) -> Void) {
+    public func updateBio(userId: String, bioText: String, completion: @escaping (Error?) -> Void) {
         DBService.firestoreDB.collection(ManoUserCollectionKeys.collectionKey).document(userId).updateData([ManoUserCollectionKeys.bioKey : bioText]) { (error) in
             if let error = error {
                 completion(error)
@@ -46,7 +46,7 @@ extension DBService {
         }
     }
     
-    static public func fetchManoUser(userId: String, completion: @escaping (Error?, ManoUser?) -> Void) {
+    public func fetchManoUser(userId: String, completion: @escaping (Error?, ManoUser?) -> Void) {
         DBService.firestoreDB
             .collection(ManoUserCollectionKeys.collectionKey)
             .whereField(ManoUserCollectionKeys.userIdKey, isEqualTo: userId)
@@ -62,7 +62,7 @@ extension DBService {
         }
     }
     
-    static public func deleteAccount(user: ManoUser, completion: @escaping (Error?) -> Void) {
+   public func deleteAccount(user: ManoUser, completion: @escaping (Error?) -> Void) {
         DBService.firestoreDB
             .collection(ManoUserCollectionKeys.collectionKey)
             .document(user.userId)

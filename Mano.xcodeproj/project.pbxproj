@@ -16,6 +16,7 @@
 		D51DF05223402FEB00DCAEA0 /* RideHistoryCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = D51DF05023402FEB00DCAEA0 /* RideHistoryCell.xib */; };
 		D553861E232710140076C1AC /* MenuView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D553861D232710140076C1AC /* MenuView.swift */; };
 		D560CF50231B419100973EAF /* APIKeys.swift in Sources */ = {isa = PBXBuildFile; fileRef = D560CF4F231B419100973EAF /* APIKeys.swift */; };
+		D568DD892357E4E9005C0F3C /* ViewController+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = D568DD882357E4E9005C0F3C /* ViewController+Extension.swift */; };
 		D579154523158EA8002F829F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D579154423158EA8002F829F /* AppDelegate.swift */; };
 		D579154D23158EA8002F829F /* Mano.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = D579154B23158EA8002F829F /* Mano.xcdatamodeld */; };
 		D579154F23158EAA002F829F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D579154E23158EAA002F829F /* Assets.xcassets */; };
@@ -38,6 +39,7 @@
 		D58C18BE231C811F005DFA2C /* Date+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = D58C18BD231C811F005DFA2C /* Date+Extension.swift */; };
 		D5C7A3222321AF4B00EECB51 /* RideDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5C7A3202321AF4B00EECB51 /* RideDetailViewController.swift */; };
 		D5C7A3232321AF4B00EECB51 /* RideDetailViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = D5C7A3212321AF4B00EECB51 /* RideDetailViewController.xib */; };
+		D5E0360D235B51E900CD5DCD /* ConteinerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5E0360C235B51E900CD5DCD /* ConteinerViewController.swift */; };
 		D5E61062231C931B00E80886 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = D5E61061231C931B00E80886 /* GoogleService-Info.plist */; };
 		D5E61065231F105A00E80886 /* DBService+Ride.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5E61064231F105A00E80886 /* DBService+Ride.swift */; };
 		D5E61068231F188B00E80886 /* AlertViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5E61066231F188A00E80886 /* AlertViewController.swift */; };
@@ -58,6 +60,7 @@
 		D51DF05023402FEB00DCAEA0 /* RideHistoryCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = RideHistoryCell.xib; sourceTree = "<group>"; };
 		D553861D232710140076C1AC /* MenuView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuView.swift; sourceTree = "<group>"; };
 		D560CF4F231B419100973EAF /* APIKeys.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIKeys.swift; sourceTree = "<group>"; };
+		D568DD882357E4E9005C0F3C /* ViewController+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ViewController+Extension.swift"; sourceTree = "<group>"; };
 		D579154123158EA8002F829F /* Mano.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Mano.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D579154423158EA8002F829F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		D579154C23158EA8002F829F /* Mano.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Mano.xcdatamodel; sourceTree = "<group>"; };
@@ -82,6 +85,7 @@
 		D58C18BD231C811F005DFA2C /* Date+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+Extension.swift"; sourceTree = "<group>"; };
 		D5C7A3202321AF4B00EECB51 /* RideDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = RideDetailViewController.swift; path = "../../app-ui/RideDetailViewController.swift"; sourceTree = "<group>"; };
 		D5C7A3212321AF4B00EECB51 /* RideDetailViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = RideDetailViewController.xib; sourceTree = "<group>"; };
+		D5E0360C235B51E900CD5DCD /* ConteinerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConteinerViewController.swift; sourceTree = "<group>"; };
 		D5E61061231C931B00E80886 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		D5E61064231F105A00E80886 /* DBService+Ride.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DBService+Ride.swift"; sourceTree = "<group>"; };
 		D5E61066231F188A00E80886 /* AlertViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertViewController.swift; sourceTree = "<group>"; };
@@ -134,6 +138,7 @@
 				D5183512231B3E2500CCADD4 /* ViewController+Alert.swift */,
 				D58C18BD231C811F005DFA2C /* Date+Extension.swift */,
 				D51DF04D23402A8E00DCAEA0 /* String+Extension.swift */,
+				D568DD882357E4E9005C0F3C /* ViewController+Extension.swift */,
 			);
 			path = "app-ext";
 			sourceTree = "<group>";
@@ -220,6 +225,7 @@
 				D57B307F231C1D0F00BCFC48 /* ScheduleRideViewController.swift */,
 				D5C7A3202321AF4B00EECB51 /* RideDetailViewController.swift */,
 				D51DF04B233FA60A00DCAEA0 /* MenuViewController.swift */,
+				D5E0360C235B51E900CD5DCD /* ConteinerViewController.swift */,
 			);
 			path = view;
 			sourceTree = "<group>";
@@ -402,6 +408,7 @@
 				D553861E232710140076C1AC /* MenuView.swift in Sources */,
 				D5C7A3222321AF4B00EECB51 /* RideDetailViewController.swift in Sources */,
 				D5E61068231F188B00E80886 /* AlertViewController.swift in Sources */,
+				D568DD892357E4E9005C0F3C /* ViewController+Extension.swift in Sources */,
 				D518350F231B3C3200CCADD4 /* MapsHelper.swift in Sources */,
 				D57B3088231C5DC600BCFC48 /* ColectionKeys.swift in Sources */,
 				D57B308A231C5DFA00BCFC48 /* Ride.swift in Sources */,
@@ -419,6 +426,7 @@
 				D57B3080231C1D0F00BCFC48 /* ScheduleRideViewController.swift in Sources */,
 				D5791560231869DF002F829F /* MainViewController.swift in Sources */,
 				D58C18B6231C7F65005DFA2C /* AuthService.swift in Sources */,
+				D5E0360D235B51E900CD5DCD /* ConteinerViewController.swift in Sources */,
 				D58C18BA231C7FEB005DFA2C /* DBService.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

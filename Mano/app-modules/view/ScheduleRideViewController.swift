@@ -30,11 +30,12 @@ class ScheduleRideViewController: UIViewController {
     private var selectedDatePressed = false
     private var changeWidth = true
     
+    private var dbService = DBService()
     override func viewDidLoad() {
         super.viewDidLoad()
         view = scheduleRideView
         scheduleRideView.delegate = self
-        guard let currentUser = DBService.currentManoUser,
+        guard let currentUser = AuthService.currentManoUser,
             let homeAddress = currentUser.homeAdress,
             let homeLon = currentUser.homeLon,
             let homeLat = currentUser.homeLat else {showAlert(title: "Error", message: "User not found")
@@ -188,7 +189,7 @@ extension ScheduleRideViewController: ScheduleRideViewDelegate {
     func scheduleRidePressed() {
         let date = scheduleRideView.datePicker.date.dateDescription
         let timeStamp = Date().dateDescription
-        DBService.createARide(date: date, passangerId: DBService.currentManoUser.userId  , passangerName: DBService.currentManoUser.fullName, pickupAddress: pickupAddress!, dropoffAddress: dropoffAddress, dropoffName: dropoffName, pickupLat: pickupLat, pickupLon: pickupLon, dropoffLat: dropoffLat, dropoffLon: dropoffLon, dateRequested: timeStamp, passangerCell: DBService.currentManoUser.cellPhone!) { [weak self] error in
+        dbService.createARide(date: date, passangerId: AuthService.currentManoUser.userId  , passangerName: AuthService.currentManoUser.fullName, pickupAddress: pickupAddress!, dropoffAddress: dropoffAddress, dropoffName: dropoffName, pickupLat: pickupLat, pickupLon: pickupLon, dropoffLat: dropoffLat, dropoffLon: dropoffLon, dateRequested: timeStamp, passangerCell: AuthService.currentManoUser.cellPhone!) { [weak self] error in
             if let error = error {
                 self?.showAlert(title: "Error creating ride", message: error.localizedDescription)
             }

@@ -12,8 +12,14 @@ import Foundation
 import FirebaseFirestore
 import Firebase
 
+protocol RideFetchingDelegate: AnyObject {
+    func didFetchRides(rides: [Ride])
+    func errorFetchingRides(error: Error)
+}
+
 final class DBService {
-    private init() {}
+    
+    weak var rideFetchingDelegate: RideFetchingDelegate?
     
     public static var firestoreDB: Firestore = {
         let db = Firestore.firestore()

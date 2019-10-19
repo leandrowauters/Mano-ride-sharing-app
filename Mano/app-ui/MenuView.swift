@@ -149,7 +149,7 @@ class MenuView: UIView {
         userName.snp.makeConstraints { (make) in
             make.centerX.equalTo(userImage).multipliedBy(0.8)
             make.leading.equalTo(-10)
-            make.trailing.equalTo(-10)
+            make.trailing.equalTo(10)
         }
     }
     
