@@ -10,13 +10,17 @@ import UIKit
 import GooglePlaces
 import Firebase
 
+protocol MainViewControllerDelegate: AnyObject {
+    func toggleMenu()
+}
 class MainViewController: UIViewController {
     
 
     let mainScreenView = MainScreenView()
-    
+    let menuViewController = MenuViewController()
     let auth = AuthService()
-    
+
+    weak var delegate: MainViewControllerDelegate?
     private var rides = [Ride]() {
         didSet {
             DispatchQueue.main.async {
@@ -70,7 +74,14 @@ class MainViewController: UIViewController {
     }
 
 
-    
+    func configureMenuVC() {
+
+            view.insertSubview(menuViewController.view, at: 0)
+            addChild(menuViewController)
+            menuViewController.didMove(toParent: self)
+            print("Did add menu controller")
+        
+    }
 
 }
 extension MainViewController: AuthServiceSignInDelegate {
@@ -101,12 +112,14 @@ extension MainViewController: RideFetchingDelegate {
         showAlert(title: "Error fetching ride", message: error.localizedDescription)
     }
     
-    
+
 }
 extension MainViewController: MainScreenDelegate{
-    func manuPressed() {
-
+    
+    func menuPressed() {
+        delegate?.toggleMenu()
     }
+    
     
     func didPressedWhereTo(_: Bool) {
         MapsHelper.shared.setupAutoCompeteVC(Vc: self)

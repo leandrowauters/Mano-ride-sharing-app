@@ -24,20 +24,25 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         GMSServices.provideAPIKey(APIKeys.googleAPI)
         FirebaseApp.configure()
         GIDSignIn.sharedInstance().clientID = FirebaseApp.app()?.options.clientID
-        var nav = UINavigationController()
+       
 //        AppDelegate.authservice.signOutAccount()
         if let manoUser = AppDelegate.authservice.getCurrentUser() {
-            let mainViewVc = MainViewController(nibName: nil, bundle: nil, userId: manoUser.uid)
-            nav = UINavigationController.init(rootViewController: mainViewVc)
+            let containerView = ContainerViewController()
+            containerView.userId = manoUser.uid
+            self.window = UIWindow(frame: UIScreen.main.bounds)
+            self.window?.rootViewController = containerView
+            self.window?.makeKeyAndVisible()
         } else {
             let storyboard = UIStoryboard(name: "Login+Create+Storyboard", bundle: nil)
             let loginViewController = storyboard.instantiateViewController(withIdentifier: "LoginViewController") as! LoginViewController
+             var nav = UINavigationController()
             nav = UINavigationController.init(rootViewController: loginViewController)
+            nav.isNavigationBarHidden = true
+            self.window = UIWindow(frame: UIScreen.main.bounds)
+            self.window?.rootViewController = nav
+            self.window?.makeKeyAndVisible()
         }
-        nav.isNavigationBarHidden = true
-        self.window = UIWindow(frame: UIScreen.main.bounds)
-        self.window?.rootViewController = nav
-        self.window?.makeKeyAndVisible()
+
         // Override point for customization after application launch.
         return true
     }

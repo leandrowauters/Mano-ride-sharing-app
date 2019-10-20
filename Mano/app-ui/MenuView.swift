@@ -109,12 +109,12 @@ class MenuView: UIView {
     }
     
     private func commonInit() {
-        backgroundColor = #colorLiteral(red: 0.139659673, green: 0.1499087512, blue: 0.1619653702, alpha: 0)
-        setupMenuView()
-        setupTopView()
-        setupImageView()
-        setupUserName()
-        setupEditView()
+        backgroundColor = .white
+//        setupMenuView()
+//        setupTopView()
+//        setupImageView()
+//        setupUserName()
+//        setupEditView()
     }
     
     

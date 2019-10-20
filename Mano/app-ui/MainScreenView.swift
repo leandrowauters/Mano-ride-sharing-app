@@ -12,14 +12,13 @@ import SnapKit
 
 protocol MainScreenDelegate: AnyObject {
     func didPressedWhereTo(_: Bool)
-    func manuPressed()
+    func menuPressed()
 }
 class MainScreenView: UIView {
     
     public var isScheduleViewHiden = true
     weak var delegate: MainScreenDelegate?
-    
-    let menuView = MenuView()
+
     lazy var background: UIImageView = {
         var imageView = UIImageView()
         imageView.image = UIImage(named: "background")
@@ -351,7 +350,7 @@ class MainScreenView: UIView {
     }
     
     @objc func menuPressed() {
-        delegate?.manuPressed()
+        delegate?.menuPressed()
     }
     
     private func locationWasSelected() {
