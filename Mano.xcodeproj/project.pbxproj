@@ -46,6 +46,8 @@
 		D5E61069231F188B00E80886 /* AlertViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = D5E61067231F188B00E80886 /* AlertViewController.xib */; };
 		D5E6106C2320307000E80886 /* RideStatusCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5E6106A2320307000E80886 /* RideStatusCollectionViewCell.swift */; };
 		D5E6106D2320307000E80886 /* RideStatusCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = D5E6106B2320307000E80886 /* RideStatusCollectionViewCell.xib */; };
+		D5F5B717235F9B39004894D6 /* MenuTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5F5B715235F9B39004894D6 /* MenuTableViewCell.swift */; };
+		D5F5B718235F9B39004894D6 /* MenuTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = D5F5B716235F9B39004894D6 /* MenuTableViewCell.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -92,6 +94,8 @@
 		D5E61067231F188B00E80886 /* AlertViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AlertViewController.xib; sourceTree = "<group>"; };
 		D5E6106A2320307000E80886 /* RideStatusCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RideStatusCollectionViewCell.swift; sourceTree = "<group>"; };
 		D5E6106B2320307000E80886 /* RideStatusCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = RideStatusCollectionViewCell.xib; sourceTree = "<group>"; };
+		D5F5B715235F9B39004894D6 /* MenuTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuTableViewCell.swift; sourceTree = "<group>"; };
+		D5F5B716235F9B39004894D6 /* MenuTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MenuTableViewCell.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -191,12 +195,9 @@
 				D58C18AC231C5F10005DFA2C /* Login+Create+Storyboard.storyboard */,
 				D5E61066231F188A00E80886 /* AlertViewController.swift */,
 				D5E61067231F188B00E80886 /* AlertViewController.xib */,
-				D5E6106A2320307000E80886 /* RideStatusCollectionViewCell.swift */,
-				D5E6106B2320307000E80886 /* RideStatusCollectionViewCell.xib */,
-				D51DF04F23402FEB00DCAEA0 /* RideHistoryCell.swift */,
-				D51DF05023402FEB00DCAEA0 /* RideHistoryCell.xib */,
-				D5C7A3212321AF4B00EECB51 /* RideDetailViewController.xib */,
 				D553861D232710140076C1AC /* MenuView.swift */,
+				D5F5B714235F9B09004894D6 /* Cells */,
+				D5C7A3212321AF4B00EECB51 /* RideDetailViewController.xib */,
 			);
 			path = "app-ui";
 			sourceTree = "<group>";
@@ -260,6 +261,19 @@
 			path = FirebaseHelper;
 			sourceTree = "<group>";
 		};
+		D5F5B714235F9B09004894D6 /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+				D5F5B715235F9B39004894D6 /* MenuTableViewCell.swift */,
+				D5F5B716235F9B39004894D6 /* MenuTableViewCell.xib */,
+				D5E6106A2320307000E80886 /* RideStatusCollectionViewCell.swift */,
+				D5E6106B2320307000E80886 /* RideStatusCollectionViewCell.xib */,
+				D51DF04F23402FEB00DCAEA0 /* RideHistoryCell.swift */,
+				D51DF05023402FEB00DCAEA0 /* RideHistoryCell.xib */,
+			);
+			path = Cells;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -321,6 +335,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D5F5B718235F9B39004894D6 /* MenuTableViewCell.xib in Resources */,
 				D579155223158EAA002F829F /* LaunchScreen.storyboard in Resources */,
 				D5C7A3232321AF4B00EECB51 /* RideDetailViewController.xib in Resources */,
 				D51DF05223402FEB00DCAEA0 /* RideHistoryCell.xib in Resources */,
@@ -417,6 +432,7 @@
 				D58C18AF231C660E005DFA2C /* IBDesignableViews.swift in Sources */,
 				D5E6106C2320307000E80886 /* RideStatusCollectionViewCell.swift in Sources */,
 				D5183513231B3E2500CCADD4 /* ViewController+Alert.swift in Sources */,
+				D5F5B717235F9B39004894D6 /* MenuTableViewCell.swift in Sources */,
 				D579154523158EA8002F829F /* AppDelegate.swift in Sources */,
 				D58C18BC231C805F005DFA2C /* DBService+ManoUser.swift in Sources */,
 				D51DF04E23402A8E00DCAEA0 /* String+Extension.swift in Sources */,

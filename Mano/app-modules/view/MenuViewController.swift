@@ -8,13 +8,25 @@
 
 import UIKit
 
-class MenuViewController: UIViewController {
+protocol MenuViewControllerDelegate: AnyObject {
+    func hideMenu()
+}
+class MenuViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
+
+    
 
     let manuView = MenuView()
     
+    weak var delegate: MenuViewControllerDelegate?
+    
+    let options: [Options] = [.notifications,.messages,.editProfile,.settings,.signOut]
     override func viewDidLoad() {
         super.viewDidLoad()
         view = manuView
+        manuView.delegate = self
+        manuView.optionTableView.delegate = self
+        manuView.optionTableView.dataSource = self
+        manuView.optionTableView.register(UINib(nibName: "MenuTableViewCell", bundle: nil), forCellReuseIdentifier: "MenuTableViewCell")
         // Do any additional setup after loading the view.
     }
     
@@ -26,14 +38,23 @@ class MenuViewController: UIViewController {
     @objc func dismissView() {
         dismiss(animated: false)
     }
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return options.count
     }
-    */
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: "MenuTableViewCell", for: indexPath) as?  MenuTableViewCell else {fatalError()}
+        cell.configureCell(option: options[indexPath.row])
+        return cell
+    }
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 50
+    }
+}
 
+extension MenuViewController: MenuScreenDelegate {
+    func menuPressed() {
+        delegate?.hideMenu()
+    }
 }
